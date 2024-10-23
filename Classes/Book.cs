@@ -22,5 +22,10 @@
         {
             State.Return(this);
         }
+
+        public void Reserve(User user)
+        {
+            State.Reserve(this, user);
+        }
     }
 }

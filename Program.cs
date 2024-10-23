@@ -18,8 +18,8 @@ namespace online_library_system
             Console.WriteLine($"{premiumUser.Name} is a premium user.");
 
             Console.WriteLine("\nAdding books to the library...");
-            Book regularBook = new Book("Regular Book", false);
-            Book premiumBook = new Book("Premium Book", true);
+            Book regularBook = new Book("C# Programming", false);
+            Book premiumBook = new Book("Premium C# Guide", true);
 
             LibraryCatalogue catalogue = new LibraryCatalogue();
             catalogue.AddBook(regularBook);
@@ -33,21 +33,22 @@ namespace online_library_system
                 Console.WriteLine($"Browsing book: {book.Title} (Premium: {book.IsPremium})");
             }
 
-            Console.WriteLine("\nSetting up the borrowing process...");
-            var availabilityHandler = new AvailabilityHandler();
-            var premiumHandler = new PremiumBookHandler();
-            var borrowProcessHandler = new BorrowProcessHandler();
-
-            availabilityHandler.SetNext(premiumHandler);
-            premiumHandler.SetNext(borrowProcessHandler);
-
             Console.WriteLine("\nAttempting to borrow books...");
-
             Console.WriteLine($"\n{regularUser.Name} is trying to borrow the premium book: {premiumBook.Title}");
-            availabilityHandler.Handle(regularUser, premiumBook);
+            libraryProxy.BorrowBook(regularUser, premiumBook);
 
             Console.WriteLine($"\n{premiumUser.Name} is trying to borrow the premium book: {premiumBook.Title}");
-            availabilityHandler.Handle(premiumUser, premiumBook);
+            libraryProxy.BorrowBook(premiumUser, premiumBook);
+
+            Console.WriteLine($"\n{premiumUser.Name} is now returning the book: {premiumBook.Title}");
+            libraryProxy.ReturnBook(premiumBook);
+
+            Console.WriteLine("\nAttempting to borrow books again...");
+            Console.WriteLine($"\n{regularUser.Name} is trying to borrow the premium book: {premiumBook.Title}");
+            libraryProxy.BorrowBook(regularUser, premiumBook);
+
+            Console.WriteLine($"\n{premiumUser.Name} is trying to borrow the premium book: {premiumBook.Title}");
+            libraryProxy.BorrowBook(premiumUser, premiumBook);
 
             Console.WriteLine($"\n{premiumUser.Name} is now returning the book: {premiumBook.Title}");
             libraryProxy.ReturnBook(premiumBook);

@@ -14,5 +14,10 @@ namespace online_library_system
             Console.WriteLine($"{book.Title} has been returned.");
             book.State = new AvailableState();
         }
+
+        public void Reserve(Book book, User user)
+        {
+            Console.WriteLine($"{book.Title} is borrowed and cannot be reserved.");
+        }
     }
 }

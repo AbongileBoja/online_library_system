@@ -6,5 +6,7 @@
         void Borrow(Book book, User user);
 
         void Return(Book book);
+
+        void Reserve(Book book, User user);
     }
 }

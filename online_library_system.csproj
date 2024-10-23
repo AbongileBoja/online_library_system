@@ -46,10 +46,8 @@
     <Compile Include="Handlers\AvailabilityCheckHandler.cs" />
     <Compile Include="State\AvailableState.cs" />
     <Compile Include="Classes\Book.cs" />
-    <Compile Include="Classes\BookCategory.cs" />
     <Compile Include="Classes\BookItem.cs" />
     <Compile Include="Iterators\BookIterator.cs" />
-    <Compile Include="Proxy\BookProxy.cs" />
     <Compile Include="State\BorrowedState.cs" />
     <Compile Include="Handlers\BorrowHandler.cs" />
     <Compile Include="Handlers\BorrowProcessHandler.cs" />
